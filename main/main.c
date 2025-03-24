@@ -103,9 +103,10 @@ void oled_task(void *p)
 
     while (1)
     {
-        char info[20];
+        
         if ((xSemaphoreTake(xSemaphoreTrigger, pdMS_TO_TICKS(1000)) == pdTRUE) && ((xQueueReceive(xQueueDistance, &distancia, pdMS_TO_TICKS(1000)))))
         {
+            char info[20];
             if (distancia <= 450 && distancia >= 2)
             {
                 barra = distancia * 128 / 450;
